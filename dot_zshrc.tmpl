@@ -12,7 +12,7 @@ else
 fi
 
 # Disable the Host part of the prompt
-export DEFAULT_USER=$USER
+export DEFAULT_USER=$(whoami)
 
 # Set up rbenv
 if which rbenv > /dev/null; then
