@@ -1,1 +1,1 @@
-FROM ghcr.io/nikko.miu/dotfiles/remote-dev:main
+FROM ghcr.io/nikkomiu/dotfiles/remote-dev:main
