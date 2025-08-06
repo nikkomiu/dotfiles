@@ -1,4 +1,4 @@
-name: Docker
+name: Docker - Remote Dev
 
 on:
   push:
