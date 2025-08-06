@@ -8,7 +8,7 @@ export GOPATH=$HOME/.go
 if [[ -n $SSH_CONNECTION ]]; then
   export EDITOR=vim
 else
-  export EDITOR=code
+  export EDITOR="code --wait"
 fi
 
 # Disable the Host part of the prompt
