@@ -1,0 +1,16 @@
+#!/bin/sh
+
+# Add chezmoi if env var set
+if [ -n "$CHEZMOI_REPO" ]; then
+  chezmoi init --apply $CHEZMOI_REPO
+fi
+
+# TODO: add arg for tunnel or http server
+
+tunnel_name=$(cat /etc/hostname)
+if [ -n "$VSCODE_TUNNEL_NAME" ]; then
+  tunnel_name=$VSCODE_TUNNEL_NAME
+fi
+
+# Run VS Code Tunnel
+code tunnel --accept-server-license-terms --name $tunnel_name

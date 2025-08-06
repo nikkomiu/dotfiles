@@ -20,7 +20,7 @@
     "cmake.showConfigureWithDebuggerNotification": false,
     "editor.stickyScroll.enabled": false,
     "workbench.tree.enableStickyScroll": false,
-    "continue.enableTabAutocomplete": false,
+    "continue.enableTabAutocomplete": true,
     "cmake.revealLog": "never",
     "testing.automaticallyOpenTestResults": "neverOpen",
     "telemetry.feedback.enabled": false,

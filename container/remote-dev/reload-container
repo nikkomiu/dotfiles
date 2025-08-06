@@ -1,0 +1,16 @@
+#!/bin/sh
+
+reload_path="/tmp/reload-docker-container"
+
+if [ "$1" = "check" ]; then
+  if [ -f $reload_path ]; then
+    echo "container reload requested"
+    exit 0
+  else
+    echo "no container reload requested"
+    exit 1
+  fi
+else
+  touch $reload_path
+  echo "container reload requested"
+fi
