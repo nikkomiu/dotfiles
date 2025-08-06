@@ -2,4 +2,4 @@
 	defaultBranch = main
 [user]
 	name = Nikko Miu
-	email = {{ or .email "nikkoamiu@gmail.com" }}
+	email = {{ or (index . "email") "nikkoamiu@gmail.com" }}
