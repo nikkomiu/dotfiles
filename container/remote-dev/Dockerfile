@@ -1,15 +1,44 @@
 FROM debian
 
-# Install dependencies
+ARG GO_VERSION=1.24.6
+ARG GIT_CREDENTIAL_MANAGER_VERSION=2.6.1
+
+ENV DOTNET_SYSTEM_GLOBALIZATION_INVARIANT=1
+
+# Install OS dependencies
 RUN apt-get update && \
-    apt-get install -y curl wget sudo zsh git locales locales-all && \
+    apt-get install -y \
+        # my base tooling for everything
+        curl wget sudo zsh git \
+        # needed for zsh to render correctly
+        locales locales-all \
+        # needed by vault install
+        gnupg2 lsb-release && \
     locale-gen
 
-# Install chezmoi
+# Install chezmoi globally
 RUN sh -c "$(curl -fsLS get.chezmoi.io)" -- -b /usr/local/bin
 
+# Install Go
+RUN wget -qO go.tar.gz https://go.dev/dl/go$GO_VERSION.linux-amd64.tar.gz && \
+    tar -xf go.tar.gz && \
+    mv go /usr/local/go && \
+    rm go.tar.gz && \
+    echo "export PATH=\$PATH:/usr/local/go/bin" >> /etc/zsh/zshrc
+
+# Install Vault CLI
+RUN wget -qO - https://apt.releases.hashicorp.com/gpg | sudo gpg --dearmor -o /usr/share/keyrings/hashicorp-archive-keyring.gpg && \
+    echo "deb [arch=$(dpkg --print-architecture) signed-by=/usr/share/keyrings/hashicorp-archive-keyring.gpg] https://apt.releases.hashicorp.com $(grep -oP '(?<=UBUNTU_CODENAME=).*' /etc/os-release || lsb_release -cs) main" | sudo tee /etc/apt/sources.list.d/hashicorp.list && \
+    sudo apt-get update && sudo apt-get install vault
+
+# Install git credential manager
+RUN wget -qO gcm.deb https://github.com/git-ecosystem/git-credential-manager/releases/download/v$GIT_CREDENTIAL_MANAGER_VERSION/gcm-linux_amd64.$GIT_CREDENTIAL_MANAGER_VERSION.deb && \
+    dpkg -i gcm.deb && \
+    rm -rf gcm.deb && \
+    git-credential-manager configure
+
 # Install VS Code CLI
-RUN wget -O vscode.tar.gz "https://code.visualstudio.com/sha/download?build=stable&os=cli-alpine-x64" && \
+RUN wget -qO vscode.tar.gz "https://code.visualstudio.com/sha/download?build=stable&os=cli-alpine-x64" && \
     tar -xf vscode.tar.gz && \
     mv code /usr/local/bin/code && \
     rm -rf vscode.tar.gz
