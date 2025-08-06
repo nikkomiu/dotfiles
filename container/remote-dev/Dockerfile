@@ -35,7 +35,8 @@ RUN wget -qO - https://apt.releases.hashicorp.com/gpg | sudo gpg --dearmor -o /u
 RUN wget -qO gcm.deb https://github.com/git-ecosystem/git-credential-manager/releases/download/v$GIT_CREDENTIAL_MANAGER_VERSION/gcm-linux_amd64.$GIT_CREDENTIAL_MANAGER_VERSION.deb && \
     dpkg -i gcm.deb && \
     rm -rf gcm.deb && \
-    git-credential-manager configure
+    git-credential-manager configure && \
+    echo "export GIT_CONFIG_CREDENTIAL_HELPER=manager" >> /etc/zsh/zshrc
 
 # Install VS Code CLI
 RUN wget -qO vscode.tar.gz "https://code.visualstudio.com/sha/download?build=stable&os=cli-alpine-x64" && \
