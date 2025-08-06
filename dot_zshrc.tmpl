@@ -25,12 +25,12 @@ export VAULT_ADDR=https://vault.0.miu.guru
 # Auto update oh my zsh
 export DISABLE_UPDATE_PROMPT=true
 
-{{ if eq .chezmoi.os "linux" }}
+{{ if eq .chezmoi.os "linux" -}}
 if which xdg-open > /dev/null; then
   # Create an alias to 'open' to emulate the macOS open command
   alias open=xdg-open
 fi
-{{ end }}
+{{- end }}
 
 # Path to your Oh My Zsh installation.
 export ZSH="$HOME/.oh-my-zsh"
