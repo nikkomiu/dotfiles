@@ -1,12 +1,15 @@
 # Update path variable to include extra paths
-export PATH=$PATH:$HOME/.bin:$HOME/go/bin
+export PATH=$PATH:$HOME/.bin:$HOME/.go/bin
+
+# Set Go variables
+export GOPATH=$HOME/.go
 
 # Set the editor
 if [[ -n $SSH_CONNECTION ]]; then
   export EDITOR=vim
 else
   export EDITOR=code
-end
+fi
 
 # Disable the Host part of the prompt
 export DEFAULT_USER=$USER
