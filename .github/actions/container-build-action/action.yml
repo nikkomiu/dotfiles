@@ -5,6 +5,12 @@ inputs:
     description: Docker Registry
     required: false
     default: docker.io
+  username:
+    description: Username for the Registry login
+    required: true
+  password:
+    description: Password for the Registry login
+    required: true
   image-name:
     description: Path within the registry to publish the image under
     required: true
@@ -35,8 +41,8 @@ runs:
       uses: docker/login-action@343f7c4344506bcbf9b4de18042ae17996df046d # v3.0.0
       with:
         registry: ${{ inputs.registry }}
-        username: ${{ github.actor }}
-        password: ${{ secrets.GITHUB_TOKEN }}
+        username: ${{ inputs.username }}
+        password: ${{ inputs.password }}
 
     # Extract metadata (tags, labels) for Docker
     # https://github.com/docker/metadata-action

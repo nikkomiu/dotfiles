@@ -39,5 +39,7 @@ jobs:
       - uses: ./.github/actions/container-build-action
         with:
           registry: ghcr.io
+          username: ${{ github.actor }}
+          password: ${{ secrets.GITHUB_TOKEN }}
           image-name: ${{ github.repository }}/remote-dev
           context: container/remote-dev
