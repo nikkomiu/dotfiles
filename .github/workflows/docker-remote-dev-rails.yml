@@ -1,4 +1,4 @@
-name: Docker - Remote Dev
+name: Docker - Remote Dev - Rails
 
 on:
   push:
@@ -7,14 +7,14 @@ on:
     tags: [ 'v*.*.*' ]
     paths:
     - .github/actions/container-build-action/action.yml
-    - .github/workflows/docker-remote-dev.yml
-    - container/remote-dev/**
+    - .github/workflows/docker-remote-dev-rails.yml
+    - container/remote-dev-rails/**
   pull_request:
     branches: [ "main" ]
     paths:
     - .github/actions/container-build-action/action.yml
-    - .github/workflows/docker-remote-dev.yml
-    - container/remote-dev/**
+    - .github/workflows/docker-remote-dev-rails.yml
+    - container/remote-dev-rails/**
 
 jobs:
   build_remote_dev:
@@ -36,5 +36,5 @@ jobs:
           registry: ghcr.io
           username: ${{ github.actor }}
           password: ${{ secrets.GITHUB_TOKEN }}
-          image-name: ${{ github.repository }}/remote-dev
-          context: container/remote-dev
+          image-name: ${{ github.repository }}/remote-dev-rails
+          context: container/remote-dev-rails
