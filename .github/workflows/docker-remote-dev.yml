@@ -5,8 +5,10 @@ on:
     branches: [ "main" ]
     # Publish semver tags as releases.
     tags: [ 'v*.*.*' ]
+    paths: [ 'container/remote-dev' ]
   pull_request:
     branches: [ "main" ]
+    paths: [ 'container/remote-dev' ]
 
 env:
   # Use docker.io for Docker Hub if empty
