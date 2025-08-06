@@ -1,0 +1,59 @@
+name: Local Assistant
+version: 1.0.0
+schema: v1
+models:
+  - name: DeepSeek Coder
+    provider: ollama
+    model: deepseek-coder-v2
+    apiBase: https://ollama.0.miu.guru
+    roles:
+      - autocomplete
+
+  - name: Qwen2.5-Coder 7b
+    provider: ollama
+    model: qwen2.5-coder:7b
+    apiBase: https://ollama.0.miu.guru
+    roles:
+      - autocomplete
+
+  - name: Qwen2.5-Coder 14b
+    provider: ollama
+    model: qwen2.5-coder:14b
+    apiBase: https://ollama.0.miu.guru
+    roles:
+      - autocomplete
+
+  - name: Codestral
+    provider: ollama
+    model: codestral
+    apiBase: https://ollama.0.miu.guru
+    roles:
+      - autocomplete
+      - chat
+      - edit
+      - apply
+
+  - name: Gemma 3 12b
+    provider: ollama
+    model: gemma3:12b
+    apiBase: https://ollama.0.miu.guru
+    roles:
+      - chat
+      - edit
+      - apply
+
+  - name: Nomic Embed Text
+    provider: ollama
+    model: nomic-embed-text
+    apiBase: https://ollama.0.miu.guru
+    roles:
+      - embed
+
+context:
+  - provider: code
+  - provider: docs
+  - provider: diff
+  - provider: terminal
+  - provider: problems
+  - provider: folder
+  - provider: codebase
