@@ -15,7 +15,9 @@ fi
 export DEFAULT_USER=$USER
 
 # Set up rbenv
-eval "$(rbenv init -)"
+if which rbenv > /dev/null; then
+  eval "$(rbenv init -)"
+fi
 
 # Set the default Vault server address
 export VAULT_ADDR=https://vault.0.miu.guru
