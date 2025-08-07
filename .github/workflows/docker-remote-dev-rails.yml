@@ -17,7 +17,7 @@ on:
     - container/remote-dev-rails/**
 
 jobs:
-  build_remote_dev:
+  build:
     runs-on: ubuntu-latest
     permissions:
       contents: read
