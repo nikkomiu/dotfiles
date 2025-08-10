@@ -9,7 +9,6 @@ RUN sudo apt-get install -y \
     build-essential autoconf libssl-dev libyaml-dev zlib1g-dev libffi-dev libgmp-dev rustc
 
 # Install Node.js
-ENV NVM_DIR=/home/coder/.nvm
 RUN . $HOME/.nvm/nvm.sh && \
     nvm install $NODE_VERSION && \
     nvm use $NODE_VERSION

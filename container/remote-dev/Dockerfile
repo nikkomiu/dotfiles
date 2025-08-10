@@ -60,6 +60,7 @@ USER coder
 
 # Install NVM (user)
 RUN curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/v$NVM_VERSION/install.sh | bash
+ENV NVM_DIR=/home/coder/.nvm
 
 # Set up Oh My Zsh
 RUN sh -c "$(curl -fsSL https://raw.github.com/ohmyzsh/ohmyzsh/master/tools/install.sh)" && \
