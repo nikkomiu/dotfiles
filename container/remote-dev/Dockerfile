@@ -3,6 +3,7 @@ FROM debian
 ARG GO_VERSION=1.24.6
 ARG NVM_VERSION=0.40.3
 ARG GIT_CREDENTIAL_MANAGER_VERSION=2.6.1
+ARG GCM_CREDENTIAL_STORE=plaintext
 
 ENV DOTNET_SYSTEM_GLOBALIZATION_INVARIANT=1
 
@@ -37,7 +38,7 @@ RUN wget -qO gcm.deb https://github.com/git-ecosystem/git-credential-manager/rel
     dpkg -i gcm.deb && \
     rm -rf gcm.deb && \
     git-credential-manager configure --system && \
-    echo "export GCM_CREDENTIAL_STORE=cache" >> /etc/zsh/zshrc
+    echo "export GCM_CREDENTIAL_STORE=$GCM_CREDENTIAL_STORE" >> /etc/zsh/zshrc
 
 # Install VS Code CLI
 RUN wget -qO vscode.tar.gz "https://code.visualstudio.com/sha/download?build=stable&os=cli-alpine-x64" && \
