@@ -1,6 +1,5 @@
 FROM ghcr.io/nikkomiu/dotfiles/remote-dev:main
 
-ARG NVM_VERSION=0.40.3
 ARG NODE_VERSION=22
 ARG RUBY_VERSION=3.4.5
 
