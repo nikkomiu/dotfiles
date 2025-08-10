@@ -27,9 +27,6 @@ RUN wget -qO go.tar.gz https://go.dev/dl/go$GO_VERSION.linux-amd64.tar.gz && \
     rm go.tar.gz && \
     echo "export PATH=\$PATH:/usr/local/go/bin" >> /etc/zsh/zshrc
 
-# Install NVM
-RUN curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/v$NVM_VERSION/install.sh | bash
-
 # Install Vault CLI
 RUN wget -qO - https://apt.releases.hashicorp.com/gpg | sudo gpg --dearmor -o /usr/share/keyrings/hashicorp-archive-keyring.gpg && \
     echo "deb [arch=$(dpkg --print-architecture) signed-by=/usr/share/keyrings/hashicorp-archive-keyring.gpg] https://apt.releases.hashicorp.com $(grep -oP '(?<=UBUNTU_CODENAME=).*' /etc/os-release || lsb_release -cs) main" | sudo tee /etc/apt/sources.list.d/hashicorp.list && \
@@ -59,6 +56,9 @@ RUN useradd -m --uid 1000 --shell /bin/zsh coder && \
     mkdir /workspaces && chown coder:coder /workspaces
 
 USER coder
+
+# Install NVM (user)
+RUN curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/v$NVM_VERSION/install.sh | bash
 
 # Set up Oh My Zsh
 RUN sh -c "$(curl -fsSL https://raw.github.com/ohmyzsh/ohmyzsh/master/tools/install.sh)" && \
