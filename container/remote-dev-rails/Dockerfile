@@ -9,9 +9,6 @@ RUN sudo apt-get install -y \
     # Ruby build dependencies
     build-essential autoconf libssl-dev libyaml-dev zlib1g-dev libffi-dev libgmp-dev rustc
 
-# Install NVM
-RUN curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/v$NVM_VERSION/install.sh | bash
-
 # Install Node.js
 ENV NVM_DIR=/home/coder/.nvm
 RUN . $HOME/.nvm/nvm.sh && \
