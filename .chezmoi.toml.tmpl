@@ -1,0 +1,15 @@
+{{- $codespaces := env "CODESPACES" | not | not -}}
+
+[data]
+email = "nikkoamiu@gmail.com"
+
+[data.ssh_sign]
+{{ if $codespaces -}}
+auth_path = "oidc"
+username = "ubuntu"
+{{- else -}}
+{{- $sshSignAuthPath := promptStringOnce . "ssh_sign.auth_path" "SSH Sign Auth Path" -}}
+{{- $sshSignUsername := promptStringOnce . "ssh_sign.username" "SSH Sign Username" -}}
+auth_path = {{ $sshSignAuthPath | quote }}
+username = {{ $sshSignUsername | quote }}
+{{- end }}

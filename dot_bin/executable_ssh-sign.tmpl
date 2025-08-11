@@ -1,21 +1,13 @@
 #!/bin/bash
 
 auth_method=oidc
-{{ if and (hasKey . "ssh_sign") (hasKey .ssh_sign "auth_path") -}}
 auth_path={{ .ssh_sign.auth_path }}
-{{- else -}}
-auth_path=oidc
-{{- end }}
 
 priv_key=$HOME/.ssh/id_rsa
 pub_key=$priv_key.pub
 cert_key=$priv_key-cert.pub
 
-{{ if and (hasKey . "ssh_sign") (hasKey .ssh_sign "username") -}}
 user={{ .ssh_sign.username }}
-{{- else -}}
-user=ubuntu
-{{- end }}
 role=default
 
 # if key does not exist create it

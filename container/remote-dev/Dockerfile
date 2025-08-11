@@ -68,6 +68,9 @@ RUN sh -c "$(curl -fsSL https://raw.github.com/ohmyzsh/ohmyzsh/master/tools/inst
     sed -i 's/plugins=(git)/plugins=(git npm)/g' ~/.zshrc && \
     echo "DISABLE_UPDATE_PROMPT=true" >> ~/.zshrc
 
+# Set CODESPACES to block interactive chezmoi init
+ENV CODESPACES=true
+
 ENTRYPOINT [ "docker-entrypoint" ]
 
 LABEL org.opencontainers.image.source=https://github.com/nikkomiu/dotfiles
