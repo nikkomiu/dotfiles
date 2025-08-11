@@ -1,0 +1,7 @@
+{
+    "Alert": {
+        "prefix": ["alert"],
+        "body": ["> [!${1:NOTE|TIP|IMPORTANT|WARNING|CAUTION}]\n> $2\n\n"],
+        "description": "A GitHub flavored markdown alert"
+    }
+}

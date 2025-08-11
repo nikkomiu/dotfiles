@@ -1,13 +1,12 @@
 .github/
 
-bin/
 container/
 
 README.md
 
 {{ if ne .chezmoi.os "darwin" }}
-Library/Application Support/Code/User/settings.json
+Library/Application Support/Code/User
 {{ end }}
 {{ if ne .chezmoi.os "linux" }}
-.config/Code/settings.json
+.config/Code
 {{ end }}

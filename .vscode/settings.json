@@ -1,0 +1,7 @@
+{
+    "files.associations": {
+        "*.sh.tmpl": "shellscript",
+        "*.json.tmpl": "json",
+        "code-snippets-*.json": "snippets"
+    }
+}

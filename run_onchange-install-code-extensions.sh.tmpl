@@ -7,24 +7,21 @@ fi
 
 ext_list=$(code --list-extensions)
 
-echo "[STAT] Installing VS Code Extensions..."
-
-echo "[STAT] Installing Base Extensions..."
 {{ range .code.extensions.base -}}
 ext=$(echo $ext_list | grep {{ . }} | wc -l)
 if [ "$ext" == "0" ]; then
-  echo "[INFO]   Installing {{ . }}"
+  echo "[INFO] Installing extension: {{ . }}"
   code --install-extension {{ . }}
 fi
 {{ end }}
 
 # Install Go extensions if go is installed
 if command -v go &> /dev/null; then
-  echo "[STAT] Installing Go Extensions..."
+  # echo "[INFO] Installing Go Extensions..."
   {{ range .code.extensions.go -}}
   ext=$(echo $ext_list | grep {{ . }} | wc -l)
   if [ "$ext" == "0" ]; then
-    echo "[INFO]   Installing {{ . }}"
+    echo "[INFO] Installing extension: {{ . }}"
     code --install-extension {{ . }}
   fi
   {{ end }}
@@ -32,11 +29,11 @@ fi
 
 # Install JS extensions if node is installed
 if command -v node &> /dev/null; then
-  echo "[STAT] Installing JS Extensions..."
+  # echo "[INFO] Installing JS Extensions..."
   {{ range .code.extensions.js -}}
   ext=$(echo $ext_list | grep {{ . }} | wc -l)
   if [ "$ext" == "0" ]; then
-    echo "[INFO]   Installing {{ . }}"
+    echo "[INFO] Installing extension: {{ . }}"
     code --install-extension {{ . }}
   fi
   {{ end }}
@@ -44,11 +41,11 @@ fi
 
 # Install C++ extensions if cmake is installed
 if command -v cmake &> /dev/null; then
-  echo "[STAT] Installing C++ Extensions..."
+  # echo "[INFO] Installing C++ Extensions..."
   {{ range .code.extensions.cpp -}}
   ext=$(echo $ext_list | grep {{ . }} | wc -l)
   if [ "$ext" == "0" ]; then
-    echo "[INFO]   Installing {{ . }}"
+    echo "[INFO] Installing extension: {{ . }}"
     code --install-extension {{ . }}
   fi
   {{ end }}
@@ -56,11 +53,11 @@ fi
 
 # Install Ruby extensions if rbenv is installed
 if command -v rbenv &> /dev/null; then
-  echo "[STAT] Installing Ruby Extensions..."
+  # echo "[INFO] Installing Ruby Extensions..."
   {{ range .code.extensions.ruby -}}
   ext=$(echo $ext_list | grep {{ . }} | wc -l)
   if [ "$ext" == "0" ]; then
-    echo "[INFO]   Installing {{ . }}"
+    echo "[INFO] Installing extension: {{ . }}"
     code --install-extension {{ . }}
   fi
   {{ end }}
