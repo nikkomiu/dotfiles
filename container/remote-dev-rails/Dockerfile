@@ -1,6 +1,5 @@
 FROM ghcr.io/nikkomiu/dotfiles/remote-dev:main
 
-ARG NVM_VERSION=0.40.3
 ARG NODE_VERSION=22
 ARG RUBY_VERSION=3.4.5
 
@@ -9,11 +8,7 @@ RUN sudo apt-get install -y \
     # Ruby build dependencies
     build-essential autoconf libssl-dev libyaml-dev zlib1g-dev libffi-dev libgmp-dev rustc
 
-# Install NVM
-RUN curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/v$NVM_VERSION/install.sh | bash
-
 # Install Node.js
-ENV NVM_DIR=/home/coder/.nvm
 RUN . $HOME/.nvm/nvm.sh && \
     nvm install $NODE_VERSION && \
     nvm use $NODE_VERSION
