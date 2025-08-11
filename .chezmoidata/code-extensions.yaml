@@ -1,0 +1,19 @@
+code:
+  extensions:
+    base:
+      - continue.continue
+      - editorconfig.editorconfig
+      - github.github-vscode-theme
+      - ms-vscode-remote.remote-containers
+      - vscode-icons-team.vscode-icons
+    go:
+      - golang.go
+    js:
+      - esbenp.prettier-vscode
+      - dbaeumer.vscode-eslint
+      - styled-components.vscode-styled-components
+    cpp:
+      - ms-vscode.cmake-tools
+      - ms-vscode.cpptools
+    ruby:
+      - shopify.ruby-lsp
