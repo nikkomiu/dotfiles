@@ -1,4 +1,11 @@
 {
+{{- if eq .chezmoi.os "linux" }}
+    "window.menuBarVisibility": "hidden",
+    "window.titleBarStyle": "native",
+    "window.customTitleBarVisibility": "never",
+{{- else }}
+    "window.customTitleBarVisibility": "windowed",
+{{- end }}
     "chat.agent.enabled": false,
     "chat.commandCenter.enabled": false,
     "workbench.editor.empty.hint": "hidden",
@@ -25,7 +32,6 @@
     "testing.automaticallyOpenTestResults": "neverOpen",
     "telemetry.feedback.enabled": false,
     "explorer.autoReveal": false,
-    "window.customTitleBarVisibility": "windowed",
     "workbench.layoutControl.enabled": false,
     "extensions.ignoreRecommendations": true,
     "git.enableSmartCommit": true,
