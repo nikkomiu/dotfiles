@@ -40,4 +40,6 @@
     "workbench.panel.showLabels": false,
     "workbench.startupEditor": "none",
     "workbench.tree.enableStickyScroll": false,
+    "platformio-ide.autoOpenPlatformIOIniFile": false,
+    "update.showReleaseNotes": false,
 }
